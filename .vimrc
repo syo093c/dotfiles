@@ -26,6 +26,7 @@ colorscheme ron
 syntax on
 "set si
 set ai
+set title
 
 "move
 "move at crawped line
@@ -66,3 +67,10 @@ set modelines=0
 
 "relativenumber
 "set relativenumber
+
+"dictionary
+set dictionary+=/usr/share/dict/words
+
+"auto reload
+set autoread
+
