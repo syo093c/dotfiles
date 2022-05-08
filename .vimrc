@@ -53,17 +53,31 @@ set hlsearch
 " Enable searching as you type, rather than waiting till you press enter.
 set incsearch
 
-"replace
+"replace visual assistant
 if exists('&inccommand')
   set inccommand=split
 endif
 
 "for security
+set secure
 set nomodeline
 set modelines=0
 
-"disable statusline
-"set laststatus=0
+"utf8
+set encoding=utf-8
+
+" show search match count
+set shortmess-=S
+" Status Line Settings
+set statusline=%F " Show file name
+set statusline+=%m " Show modification
+set statusline+=%r " Show if readonly
+set statusline+=%= " align right after this
+set statusline+=\ %y[%{&fileencoding}] " file encoding
+set statusline+=[%{&ff}] " file format (dos/linux)
+set statusline+=[%p%%][%L][line:%05l,col:%02v] " percentage, line, col
+
+set laststatus=2 " Show status line (0:never, 1:two or more windows, 2:always)
 
 "relativenumber
 "set relativenumber
@@ -74,3 +88,6 @@ set dictionary+=/usr/share/dict/words
 "auto reload
 set autoread
 
+"split
+set splitbelow
+set splitright
