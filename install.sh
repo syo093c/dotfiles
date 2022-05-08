@@ -1,5 +1,4 @@
-#!/bin/bash
-set -eu
+#!/bin/bash -eu
 
 #install plugins
 echo "install zsh plugins"
