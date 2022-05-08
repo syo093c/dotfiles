@@ -5,6 +5,7 @@ set -eu
 echo "install zsh plugins"
 mv zsh-autosuggestions ohmyzsh/plugins/
 mv zsh-syntax-highlighting ohmyzsh/plugins/
+mv powerlevel10k ohmyzsh/plugins/
 mv ohmyzsh .oh-my-zsh
 
 #install to HOME
