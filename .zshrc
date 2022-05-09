@@ -1,6 +1,13 @@
 #------------------------------------------------------------------------------
 # command block use to restore usrful command
 
+#ssh agent to keep private key, so that I can let it try all key to login.
+#Rather than use "-i" to claim a key, because of ssh only use ./.ssh/id_rsa at
+#default,then it will try the keys keeped by ssh-agent. We must use ssh-agent
+#to try all keys.
+#eval `ssh-agent`
+# ssh-add private_key
+
 #set keyboard repeat rate.
 #xset -r 250 60
 #kbdrate -d 250 -r 60
@@ -137,14 +144,27 @@ export LC_ALL=en_US.UTF-8
 
 #------------------------------------------------------------------------------
 # alias block
-#for intel power management
-alias __performace_mode="sudo cpupower -c all frequency-set -g performance && sudo cpupower set -b 0 && nvidia-settings -a '[gpu:0]/GpuPowerMizerMode=1'"
-alias __powersave_mode="sudo cpupower -c all frequency-set -g powersave && sudo cpupower set -b 15   && nvidia-settings -a '[gpu:0]/GpuPowerMizerMode=0'"
 
-#generate a tmpfs at ~/mem
-alias genmem="sudo mount -o uid=1000,gid=1000,mode=0700,size=100% -t tmpfs tmpfs ~/mem"
+#for different systems
+case "${OSTYPE}" in
+    linux*)
+        #linux
+        alias open="xdg-open"
+        alias turn_monitor_off="xset dpms force off"
+        alias gpu_reload='sudo rmmod nvidia_uvm && sudo modprobe nvidia_uvm'
 
-alias gt='gnome-terminal'
+        #for intel power management
+        alias __performace_mode="sudo cpupower -c all frequency-set -g performance && sudo cpupower set -b 0 && nvidia-settings -a '[gpu:0]/GpuPowerMizerMode=1'"
+        alias __powersave_mode="sudo cpupower -c all frequency-set -g powersave && sudo cpupower set -b 15   && nvidia-settings -a '[gpu:0]/GpuPowerMizerMode=0'"
+
+        #generate a tmpfs at ~/mem
+        alias genmem="sudo mount -o uid=1000,gid=1000,mode=0700,size=100% -t tmpfs tmpfs ~/mem"
+        ;;
+    darwin*)
+        ;;
+esac
+
+alias o="open"
 alias diff='diff --color'
 alias whatsmyip='curl ipinfo.io'
 alias c="clear"
@@ -177,11 +197,6 @@ alias v="nv"
 alias dud="du ./ -hd1"
 alias hexedit="hexedit --color"
 
-#linux
-alias open="xdg-open"
-alias o="open"
-alias turn_monitor_off="xset dpms force off"
-alias gpu_reload='sudo rmmod nvidia_uvm && sudo modprobe nvidia_uvm'
 
 alias jop="$HOME/opt/Joplin/Joplin.AppImage"
 alias glances='glances --disable-plugin ip --enable-plugin sensors'
@@ -220,7 +235,9 @@ fzgrep() {
         --preview 'bat --style=numbers --color=always --line-range :500 `echo {} | cut -f 1 -d ":"` '
 }
 
-export CPATH="/usr/include${CPATH:+:}${CPATH}"
+#/usr/include may contains header file(example glibc) which is defined by 
+#gcc(gcc header), make it link to wrong file, remove it.
+#export CPATH="/usr/include${CPATH:+:}${CPATH}"
 export LIBRARY_PATH="$HOME/local/lib${LIBRARY_PATH:+:}${LIBRARY_PATH}"
 
 #PATH
