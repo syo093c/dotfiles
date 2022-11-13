@@ -6,6 +6,39 @@
 "%!xxd
 
 "------------------------------------------------------------------------------
+call plug#begin()
+	Plug 'google/vim-maktaba'
+	Plug 'google/vim-codefmt'
+    Plug 'vim-syntastic/syntastic'
+	Plug 'rust-lang/rust.vim'
+    Plug 'vim-airline/vim-airline'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call plug#end()
+
+syntax enable
+filetype plugin indent on
+
+let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
+let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
+
+let mapleader ="\<Space>"
+" -----------Buffer Management---------------
+set hidden " Allow buffers to be hidden if you've modified a buffer
+" Move to the next buffer
+nmap <leader>l :bnext<CR>
+" Move to the previous buffer
+nmap <leader>h :bprevious<CR>
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>q :bp <BAR> bd #<CR>
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
+
+" Coc.nvim
+" https://github.com/neoclide/coc.nvim
+set cmdheight=2
+set updatetime=300
+"------------------------------------------------------------------------------
 " from centOS
 set nocompatible
 set bs=indent,eol,start         " allow backspacing over everything in insert mode
@@ -30,8 +63,8 @@ set title
 
 "move
 "move at crawped line
-map j gj
-map k gk
+"noremap <CJ> gj
+"noremap <CK> gk
 
 "Tab2space
 set expandtab
@@ -44,9 +77,9 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=237
 
 "visual support
-set cuc
 set nu
-set cul
+"set cuc
+"set cul
 
 "search
 set hlsearch
@@ -68,7 +101,8 @@ set encoding=utf-8
 
 " show search match count
 set shortmess-=S
-" Status Line Settings
+
+" Status Line Settings (borrow from hikalium)
 set statusline=%F " Show file name
 set statusline+=%m " Show modification
 set statusline+=%r " Show if readonly
