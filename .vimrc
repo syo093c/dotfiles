@@ -36,6 +36,8 @@ nmap <leader>bl :ls<CR>
 
 " Coc.nvim
 " https://github.com/neoclide/coc.nvim
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
 set cmdheight=2
 set updatetime=300
 "------------------------------------------------------------------------------
@@ -54,7 +56,7 @@ set shortmess+=I
 "------------------------------------------------------------------------------
 
 "colorscheme elflord
-colorscheme ron
+"colorscheme ron
 
 syntax on
 "set si
