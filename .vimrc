@@ -73,7 +73,8 @@ nmap <leader>rn <Plug>(coc-rename)
 
 "fzf
 nnoremap <c-j> :Files<CR>
-nnoremap <c-e> :Buffers<CR>
+nnoremap <c-k> :Buffers<CR>
+
 
 set cmdheight=2
 set updatetime=300
@@ -142,13 +143,13 @@ set encoding=utf-8
 set shortmess-=S
 
 " Status Line Settings (borrow from hikalium)
-set statusline=%F " Show file name
-set statusline+=%m " Show modification
-set statusline+=%r " Show if readonly
-set statusline+=%= " align right after this
-set statusline+=\ %y[%{&fileencoding}] " file encoding
-set statusline+=[%{&ff}] " file format (dos/linux)
-set statusline+=[%p%%][%L][line:%05l,col:%02v] " percentage, line, col
+"set statusline=%F " Show file name
+"set statusline+=%m " Show modification
+"set statusline+=%r " Show if readonly
+"set statusline+=%= " align right after this
+"set statusline+=\ %y[%{&fileencoding}] " file encoding
+"set statusline+=[%{&ff}] " file format (dos/linux)
+"set statusline+=[%p%%][%L][line:%05l,col:%02v] " percentage, line, col
 
 set laststatus=2 " Show status line (0:never, 1:two or more windows, 2:always)
 
@@ -174,3 +175,7 @@ for i in range(1, 9)
 endfor
 
 cnoreabbrev tn tabnew
+
+" forbid netrw
+"let g:loaded_netrw       = 1
+"let g:loaded_netrwPlugin = 1

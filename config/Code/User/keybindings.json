@@ -37,5 +37,21 @@
     {
         "key": "ctrl+n",
         "command": "-workbench.action.files.newUntitledFile"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.showAllEditors"
+    },
+    {
+        "key": "ctrl+k ctrl+p",
+        "command": "-workbench.action.showAllEditors"
     }
 ]
