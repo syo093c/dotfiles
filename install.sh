@@ -13,4 +13,5 @@ cp -r .oh-my-zsh .curlrc .p10k.zsh  .tmux.conf  .vimrc  .wgetrc  .zshrc \
     ~
 mkdir -p ~/.config
 cp -r config/nvim ~/.config
+cp -r config/Code ~/.config
 ln -s ~/.vimrc ~/.nvimrc
