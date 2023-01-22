@@ -23,6 +23,7 @@ let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
 
 let mapleader ="\<Space>"
+"let mapleader =","
 " -----------Buffer Management---------------
 set hidden " Allow buffers to be hidden if you've modified a buffer
 " Move to the next buffer
@@ -36,6 +37,7 @@ nmap <leader>q :bp <BAR> bd #<CR>
 nmap <leader>bl :ls<CR>
 " coc tree
 nmap <space>e <Cmd>CocCommand explorer<CR>
+"nmap <Leader>er <Cmd>call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:0'], [['relative', 0, 'file']])<CR>
 
 
 " Coc.nvim
