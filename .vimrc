@@ -7,6 +7,7 @@
 
 "------------------------------------------------------------------------------
 call plug#begin()
+    Plug 'junegunn/fzf.vim'
 	Plug 'google/vim-maktaba'
 	Plug 'google/vim-codefmt'
     Plug 'vim-syntastic/syntastic'
@@ -33,10 +34,46 @@ nmap <leader>h :bprevious<CR>
 nmap <leader>q :bp <BAR> bd #<CR>
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
+" coc tree
+nmap <space>e <Cmd>CocCommand explorer<CR>
+
 
 " Coc.nvim
 " https://github.com/neoclide/coc.nvim
 inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+" Use <c-space> to trigger completion
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+"" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Formatting selected code
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+" Symbol renaming
+nmap <leader>rn <Plug>(coc-rename)
+
+"fzf
+nnoremap <c-j> :Files<CR>
+nnoremap <c-e> :Buffers<CR>
 
 set cmdheight=2
 set updatetime=300
@@ -127,3 +164,13 @@ set autoread
 "split
 set splitbelow
 set splitright
+
+"noremap
+"from hikalium
+nnoremap <S-Tab> gt
+nnoremap <Tab><Tab> gT
+for i in range(1, 9)
+	execute 'nnoremap <Tab>' . i . ' ' . i . 'gt'
+endfor
+
+cnoreabbrev tn tabnew

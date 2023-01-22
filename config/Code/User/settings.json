@@ -1,0 +1,42 @@
+{
+    "update.mode": "none",
+    "extensions.autoCheckUpdates": false,
+    "extensions.autoUpdate": false,
+    "workbench.enableExperiments": false,
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "update.showReleaseNotes": false,
+    "telemetry.telemetryLevel": "off",
+    "workbench.startupEditor": "none",
+    "editor.rulers": [80,120],
+    "editor.fontSize": 18,
+    "editor.fontFamily": "'Source Code Pro', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "python.autoUpdateLanguageServer": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "editor.inlineSuggest.enabled": true,
+    "C_Cpp.dimInactiveRegions": false,
+    "vim.neovimPath": "/usr/bin/nvim",
+    "vim.enableNeovim": true,
+    "keyboard.dispatch": "keyCode",
+    "vim.hlsearch": true,
+    "extensions.ignoreRecommendations": true,
+    "editor.dragAndDrop": false,
+    "workbench.colorTheme": "Monokai Dimmed",
+    "jupyter.askForKernelRestart": false,
+    "mesonbuild.configureOnOpen": true,
+    "editor.renderLineHighlight": "none",
+    "editor.minimap.enabled": false,
+    "editor.scrollbar.verticalScrollbarSize": 4,
+    "window.zoomLevel": -1,
+    "vscode-neovim.neovimClean": true
+}
