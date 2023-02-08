@@ -35,6 +35,8 @@ nmap <leader>h :bprevious<CR>
 nmap <leader>q :bp <BAR> bd #<CR>
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
+" new tab
+nmap <leader>n :tabnew<CR>
 " coc tree
 nmap <space>e <Cmd>CocCommand explorer<CR>
 "nmap <Leader>er <Cmd>call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:0'], [['relative', 0, 'file']])<CR>
@@ -176,7 +178,7 @@ for i in range(1, 9)
 	execute 'nnoremap <Tab>' . i . ' ' . i . 'gt'
 endfor
 
-cnoreabbrev tn tabnew
+"cnoreabbrev tn tabnew
 
 " forbid netrw
 "let g:loaded_netrw       = 1
