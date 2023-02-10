@@ -152,13 +152,13 @@ case "${OSTYPE}" in
         alias open="xdg-open"
         alias turn_monitor_off="xset dpms force off"
         alias gpu_reload='sudo rmmod nvidia_uvm && sudo modprobe nvidia_uvm'
-        alias __set_keyboard_repeat_rate='xset r rate 250 60'
+        alias __set_keyboard_repeat_rate='xset r rate 250 90'
         #for intel power management
         alias __performace_mode="sudo cpupower -c all frequency-set -g performance --max 5THz --min 5THz --related && sudo cpupower set -b 0 && nvidia-settings -a '[gpu:0]/GpuPowerMizerMode=1'"
         alias __powersave_mode="sudo cpupower -c all frequency-set -g powersave --max 5THz --min 100MHz && sudo cpupower set -b 15   && nvidia-settings -a '[gpu:0]/GpuPowerMizerMode=0'"
 
-        #generate a tmpfs at ~/mem
-        alias genmem="sudo mount -o uid=1000,gid=1000,mode=0700,size=100% -t tmpfs tmpfs ~/mem"
+        #generate a tmpfs at ~/RAM
+        alias genRAM="sudo mount -o uid=1000,gid=1000,mode=0700,size=100% -t tmpfs tmpfs ~/RAM"
         ;;
     darwin*)
         ;;
@@ -275,6 +275,12 @@ export CPATH="$HOME/local/opencv/include${CPATH:+:}${CPATH}"
 #android studio
 export PATH="$HOME/opt/android-studio/bin${PATH:+:}${PATH}"
 
+#ghcup
+export GHCUP_INSTALL_BASE_PREFIX=$HOME
+export PATH="$GHCUP_INSTALL_BASE_PREFIX/.ghcup/bin${PATH:+:}${PATH}"
+
+#cabal
+export PATH="$HOME/.cabal/bin${PATH:+:}${PATH}"
 #-------------------------------
 #function
 #convert text to utf8
@@ -285,17 +291,21 @@ _convert_to_utf8() {iconv -f `uchardet $1` -t UTF-8 $1}
 # optional software settings block, anaconda, powerlevel_9k, etc.
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-#__conda_setup="$('$HOME/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-#if [ $? -eq 0 ]; then
-#    eval "$__conda_setup"
-#else
-#    if [ -f "$HOME/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-#        . "$HOME/opt/anaconda3/etc/profile.d/conda.sh"
-#    else
-#        export PATH="$HOME/opt/anaconda3/bin${PATH:+:}${PATH}"
-#    fi
-#fi
-#unset __conda_setup
+__conda_setup="$('/home/syo/opt/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/syo/opt/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/home/syo/opt/mambaforge/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/syo/opt/mambaforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/home/syo/opt/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "/home/syo/opt/mambaforge/etc/profile.d/mamba.sh"
+fi
 # <<< conda initialize <<<
 #------------------------------------------------------------------------------
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
