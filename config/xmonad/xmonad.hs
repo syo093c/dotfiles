@@ -11,8 +11,15 @@ import XMonad
 import Data.Monoid
 import System.Exit
 import XMonad.Layout.NoBorders         -- In Full mode, border is no use
-import XMonad.Layout.ToggleLayouts
+--import XMonad.Layout.ToggleLayouts
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Actions.CycleWS
+import XMonad.Hooks.ManageDocks
+import XMonad.Util.Run
+import XMonad.Layout.MultiToggle
+import XMonad.Layout.MultiToggle.Instances
+
+import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 
@@ -69,9 +76,26 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     --[ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
+    -- a basic CycleWS setup
+    , ((modm,               xK_Down),  nextWS)
+    , ((modm,               xK_Up),    prevWS)
+    , ((modm .|. shiftMask, xK_Down),  shiftToNext)
+    , ((modm .|. shiftMask, xK_Up),    shiftToPrev)
+    , ((modm,               xK_Right), nextScreen)
+    , ((modm,               xK_Left),  prevScreen)
+    , ((modm .|. shiftMask, xK_Right), shiftNextScreen)
+    , ((modm .|. shiftMask, xK_Left),  shiftPrevScreen)
+    , ((modm,               xK_z),     toggleWS)
+    
+    --sound 
+    , ((0,xK_F6 ),     spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%")
+    , ((0,xK_F7 ),     spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%")
+    , ((0,xK_F5 ),     spawn "pactl set-sink-volume @DEFAULT_SINK@ 0%")
+
     -- slock
     , ((modm .|. shiftMask, xK_l), spawn "slock")
 
+    , ((modm .|. shiftMask, xK_b), sendMessage $ Toggle NBFULL)
     -- launch dmenu
     --, ((modm,               xK_p     ), spawn "dmenu_run")
     , ((modm,               xK_p     ), spawn "dmenu_run -nb '#16160e' -sf '#16160e' -sb '#a59aca' -nf '#a59aca' ")
@@ -134,7 +158,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.
     --
-    -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
+    , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_q     ), io exitSuccess)
@@ -196,7 +220,8 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList
 -- which denotes layout choice.
 --
 --myLayout = tiled ||| Mirror tiled ||| noBorders Full
-myLayout = tiled ||| Mirror tiled ||| noBorders Full
+--myLayout = mkToggle1 NBFULL $ mkToggle1 NOBORDERS $ tiled ||| Mirror tiled ||| noBorders Full
+myLayout = mkToggle1 NBFULL $ tiled ||| Mirror tiled ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -248,7 +273,7 @@ myEventHook = mempty
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = return ()
+--myLogHook = dynamicLogWithPP $ xmobarPP
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -266,15 +291,9 @@ myStartupHook = do spawn "bash ~/.config/xmonad/bin/autostart.sh"
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
-main = xmonad $ ewmh $ defaults
-
--- A structure containing your configuration settings, overriding
--- fields in the default config. Any you don't override, will
--- use the defaults defined in xmonad/XMonad/Config.hs
---
--- No need to modify this.
---
-defaults = def {
+main = do
+    --xmproc <- spawnPipe "xmobar"
+    xmonad $ ewmhFullscreen $ ewmh $ xmobarProp $ def {
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
@@ -284,15 +303,13 @@ defaults = def {
         workspaces         = myWorkspaces,
         normalBorderColor  = myNormalBorderColor,
         focusedBorderColor = myFocusedBorderColor,
-
       -- key bindings
         keys               = myKeys,
         mouseBindings      = myMouseBindings,
-
       -- hooks, layouts
-        layoutHook         = myLayout,
+        layoutHook         = avoidStruts $ myLayout,
         manageHook         = myManageHook,
         handleEventHook    = myEventHook,
-        logHook            = myLogHook,
+      --logHook            = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc, ppOrder = \(ws:_:t:_) -> [ws,t]},
         startupHook        = myStartupHook
     }
