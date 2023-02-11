@@ -18,6 +18,10 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
+import XMonad.Layout.LayoutCombinators
+import XMonad.Layout.Renamed
+
+
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.StatusBar
@@ -109,6 +113,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
      -- Rotate through the available layout algorithms
     , ((modm,               xK_space ), sendMessage NextLayout)
+    , ((modm,               xK_s ), sendMessage $ JumpToLayout "tiled")
+    , ((modm,               xK_d ), sendMessage $ JumpToLayout "mtiled")
+    , ((modm,               xK_f ), sendMessage $ JumpToLayout "full")
 
     --  Reset the layouts on the current workspace to default
     , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
@@ -211,7 +218,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
     ]
 
-------------------------------------------------------------------------
+----------------------------------------------------------------------
 -- Layouts:
 
 -- You can specify and transform your layouts by modifying these values.
@@ -228,8 +235,11 @@ myLayout =
     avoidStruts $
     mkToggle1 NOBORDERS $ 
     mkToggle1 NBFULL $ 
-    tiled ||| Mirror tiled ||| Full
+    name "tiled" tiled ||| 
+    name "mtiled" (Mirror $ tiled) ||| 
+    name "full" Full
         where
+            name n = renamed [Replace n]
             -- default tiling algorithm partitions the screen into two panes
             tiled   = Tall nmaster delta ratio
 
