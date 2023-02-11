@@ -32,11 +32,11 @@ xinput set-prop 'bcm5974' 'libinput Tapping Enabled' 1
 #rofi &
 
 #mute
-pactl set-sink-volume "alsa_output.pci-0000_02_00.3.Speakers" 0% 
+pactl set-sink-mute @DEFAULT_SINK@ true
 
 #macbook
 # brightness 
-brightnessctl -d acpi_video0 set 50
+# brightnessctl -d acpi_video0 set 50
 
 # nigtron wallpaper
 killall -9 nitrogen
