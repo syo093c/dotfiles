@@ -96,6 +96,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_l), spawn "slock")
 
     , ((modm .|. shiftMask, xK_b), sendMessage $ Toggle NBFULL)
+    , ((modm .|. controlMask , xK_b), sendMessage $ Toggle NOBORDERS)
     -- launch dmenu
     --, ((modm,               xK_p     ), spawn "dmenu_run")
     , ((modm,               xK_p     ), spawn "dmenu_run -nb '#16160e' -sf '#16160e' -sb '#a59aca' -nf '#a59aca' ")
@@ -223,7 +224,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList
 --
 --myLayout = tiled ||| Mirror tiled ||| noBorders Full
 --myLayout = mkToggle1 NBFULL $ mkToggle1 NOBORDERS $ tiled ||| Mirror tiled ||| noBorders Full
-myLayout = mkToggle1 NBFULL $ tiled ||| Mirror tiled ||| Full
+myLayout = mkToggle1 NOBORDERS $ mkToggle1 NBFULL $ tiled ||| Mirror tiled ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
