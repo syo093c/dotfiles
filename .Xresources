@@ -1,2 +1,4 @@
-Xft.dpi: 192
-#Xft.dpi: 128
+#Xft.dpi: 64
+Xft.dpi: 96
+#Xft.dpi: 144
+#Xft.dpi: 192
