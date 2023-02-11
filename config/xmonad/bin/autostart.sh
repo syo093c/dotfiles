@@ -24,8 +24,8 @@ xinput set-prop 'bcm5974' 'libinput Tapping Enabled' 1
 #picom --config $HOME/.config/xmonad/picom.conf &
 
 #--- polybar ---
-#killall -9 polybar
-#polybar &
+killall -9 polybar
+polybar -c $HOME/.config/xmonad/polybar/config.ini &
 
 #--- lofi ---
 #killall -9 rofi

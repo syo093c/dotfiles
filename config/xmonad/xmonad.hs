@@ -159,6 +159,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- See also the statusBar function from Hooks.DynamicLog.
     --
     , ((modm              , xK_b     ), sendMessage ToggleStruts)
+    , ((modm              , xK_a     ), spawn "polybar-msg cmd toggle")
 
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_q     ), io exitSuccess)
@@ -308,6 +309,7 @@ main = do
         mouseBindings      = myMouseBindings,
       -- hooks, layouts
         layoutHook         = avoidStruts $ myLayout,
+        --layoutHook         = myLayout,
         manageHook         = myManageHook,
         handleEventHook    = myEventHook,
       --logHook            = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc, ppOrder = \(ws:_:t:_) -> [ws,t]},
