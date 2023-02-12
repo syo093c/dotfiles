@@ -18,10 +18,8 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
-import XMonad.Layout.LayoutCombinators
-import XMonad.Layout.Renamed
-
-
+import XMonad.Layout.LayoutCombinators -- ((|||), JumpToLayout)
+import XMonad.Layout.Renamed (renamed, Rename(Replace))
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.StatusBar
