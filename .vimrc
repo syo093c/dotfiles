@@ -147,13 +147,13 @@ set encoding=utf-8
 set shortmess-=S
 
 " Status Line Settings (borrow from hikalium)
-"set statusline=%F " Show file name
-"set statusline+=%m " Show modification
-"set statusline+=%r " Show if readonly
-"set statusline+=%= " align right after this
-"set statusline+=\ %y[%{&fileencoding}] " file encoding
-"set statusline+=[%{&ff}] " file format (dos/linux)
-"set statusline+=[%p%%][%L][line:%05l,col:%02v] " percentage, line, col
+set statusline=%F " Show file name
+set statusline+=%m " Show modification
+set statusline+=%r " Show if readonly
+set statusline+=%= " align right after this
+set statusline+=\ %y[%{&fileencoding}] " file encoding
+set statusline+=[%{&ff}] " file format (dos/linux)
+set statusline+=[%p%%][%L][line:%05l,col:%02v] " percentage, line, col
 
 set laststatus=2 " Show status line (0:never, 1:two or more windows, 2:always)
 
@@ -172,14 +172,20 @@ set splitright
 
 "noremap
 "from hikalium
-nnoremap <S-Tab> gt
-nnoremap <Tab><Tab> gT
-for i in range(1, 9)
-	execute 'nnoremap <Tab>' . i . ' ' . i . 'gt'
-endfor
-
+" This is a bad idea, beacuase <Tab> has aleady used in vim, will cause ctrl+I
+" operation delay.
+"nnoremap <S-Tab> gt
+"nnoremap <C-Tab> gT 
+"for i in range(1, 9)
+"	execute 'nnoremap <Tab>' . i . ' ' . i . 'gt'
+"endfor
 "cnoreabbrev tn tabnew
 
+nnoremap th  :tabfirst<CR>
+nnoremap tk  :tabnext<CR>
+nnoremap tj  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+
 " forbid netrw
-"let g:loaded_netrw       = 1
-"let g:loaded_netrwPlugin = 1
+let g:loaded_netrw       = 1
+let g:loaded_netrwPlugin = 1

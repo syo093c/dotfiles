@@ -173,6 +173,7 @@ alias p="python"
 alias today="date +%Y_%m_%d"
 alias __set_macbook_keybord_light__="echo 60 |sudo tee  /sys/class/leds/apple::kbd_backlight/brightness"
 alias __turn_off_screen__="xset dpms force off"
+alias __ssh_agent__="eval `ssh-agent ` ssh-add $HOME/.ssh/*"
 
 # proxy settings
 alias ssr="export ALL_PROXY=http://127.0.0.1:12333;export all_proxy=http://127.0.0.1:12333;\
