@@ -10,7 +10,7 @@
 import XMonad
 import Data.Monoid
 import System.Exit
-import XMonad.Layout.NoBorders         -- In Full mode, border is no use
+--import XMonad.Layout.NoBorders         -- In Full mode, border is no use
 --import XMonad.Layout.ToggleLayouts
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Actions.CycleWS
@@ -32,7 +32,7 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "tilix"
+myTerminal      = "alacritty"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -102,6 +102,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch dmenu
     --, ((modm,               xK_p     ), spawn "dmenu_run")
     , ((modm,               xK_p     ), spawn "dmenu_run -nb '#16160e' -sf '#16160e' -sb '#a59aca' -nf '#a59aca' ")
+
+    -- screenshot
+    , ((modm .|. shiftMask, xK_s     ), spawn "flameshot gui")
 
     -- launch gmrun
     --, ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
@@ -308,7 +311,7 @@ myStartupHook = do spawn "bash ~/.config/xmonad/bin/autostart.sh"
 --
 main = do
     --xmproc <- spawnPipe "xmobar"
-    xmonad $ ewmhFullscreen $ ewmh $ xmobarProp $ def {
+    xmonad $ ewmhFullscreen $ ewmh $ docks $ xmobarProp $ def {
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
