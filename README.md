@@ -21,6 +21,19 @@ bash install.sh
 
 To use alaritty terminal, we need to configure fcitx5 input method.
 ```
+zsh
+####
+#  fcitx
+export GTK_IM_MODULE="fcitx"
+export QT_IM_MODULE="fcitx"
+export XMODIFIERS="@im=fcitx"
+export INPUT_METHOD="fcitx"
+export XIM="fcitx"
+export XIM_PROGRAM="fcitx"
+export SDL_IM_MODULE="fcitx"
+export GLFW_IM_MODULE="fcitx"
+###
+
 pacman -S fcitx5 fcitx5-mozc fcitx5-rime
 pacman -S fcitx5-qt fcitx5-gtk fcitx5-configtool
 

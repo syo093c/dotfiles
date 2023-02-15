@@ -282,6 +282,22 @@ export PATH="$GHCUP_INSTALL_BASE_PREFIX/.ghcup/bin${PATH:+:}${PATH}"
 
 #cabal
 export PATH="$HOME/.cabal/bin${PATH:+:}${PATH}"
+
+####
+#  fcitx
+export GTK_IM_MODULE="fcitx"
+export QT_IM_MODULE="fcitx"
+export XMODIFIERS="@im=fcitx"
+export INPUT_METHOD="fcitx"
+export XIM="fcitx"
+export XIM_PROGRAM="fcitx"
+export SDL_IM_MODULE="fcitx"
+export GLFW_IM_MODULE="fcitx"
+###
+
+# JAVA BUG at non-reparenting windows manger
+# matlab
+export _JAVA_AWT_WM_NONREPARENTING=1
 #-------------------------------
 #function
 #convert text to utf8
