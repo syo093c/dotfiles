@@ -39,8 +39,11 @@ pactl set-sink-mute @DEFAULT_SINK@ true
 # brightnessctl -d acpi_video0 set 50
 
 # nigtron wallpaper
-killall -9 nitrogen
-nitrogen --restore &
+#killall -9 nitrogen
+#nitrogen --restore &
+
+# show moon
+$HOME/local/bin/xphoon -b
 
 
 # ibus @IMPORTANT@ please put this at last, or xinput will conflict.
