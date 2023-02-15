@@ -18,3 +18,22 @@ sudo pacman -S fzf # for archlinux
 ``` bash
 bash install.sh
 ```
+
+To use alaritty terminal, we need to configure fcitx5 input method.
+```
+pacman -S fcitx5 fcitx5-mozc fcitx5-rime
+pacman -S fcitx5-qt fcitx5-gtk fcitx5-configtool
+
+fcitx5-configtool # activate all IME, and set auto active.
+# use F4 to change rime IME to use simple chinese.
+# use this to set mozc to use 9 as page size.
+/usr/lib/mozc/mozc_tool --mode=config_dialog
+# v ~/.local/share/fcitx5/rime/default.custom.yaml
+patch:
+  "menu/page_size": 9
+```
+
+```
+xmodmap -e 'clear Lock' -e 'keycode x042=Escape'
+activate IME, swith tty may cause these not work.
+```

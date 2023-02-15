@@ -47,4 +47,8 @@ $HOME/local/bin/xphoon -b
 
 
 # ibus @IMPORTANT@ please put this at last, or xinput will conflict.
-ibus-daemon --xim --replace
+# ibus-daemon --xim --replace
+
+# fcitx for alacritty
+killall -9 fcitx5
+fcitx5 &
