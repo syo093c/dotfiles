@@ -50,3 +50,7 @@ patch:
 xmodmap -e 'clear Lock' -e 'keycode x042=Escape'
 activate IME, swith tty may cause these not work.
 ```
+vmware 3d driver support
+https://apple.stackexchange.com/questions/343473/how-to-resolve-no-3d-support-is-available-from-the-host-error-in-vmware-fusion
+mks.gl.allowBlacklistedDrivers = "TRUE"
+~/.vmware/preferences 
