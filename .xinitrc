@@ -54,4 +54,5 @@ fi
 #xterm -geometry 80x20+494-0 &
 #exec xterm -geometry 80x66+0+0 -name login
 xset s off -dpms
+setxkbmap -option 'caps:swapescape'
 exec xmonad
