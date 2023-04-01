@@ -15,7 +15,7 @@ xinput set-prop 'bcm5974'  'libinput Natural Scrolling Enabled' 1
 # trackpad scroll speed
 xinput set-prop 'bcm5974'  "libinput Scrolling Pixel Distance" 20
 # trackpad pointer accelarate
-xinput set-prop 'bcm5974'  295 0.6
+xinput set-prop 'bcm5974'  'libinput Accel Speed' 0.6
 # tap to click
 xinput set-prop 'bcm5974' 'libinput Tapping Enabled' 1 
 
@@ -39,11 +39,11 @@ pactl set-sink-mute @DEFAULT_SINK@ true
 # brightnessctl -d acpi_video0 set 50
 
 # nigtron wallpaper
-#killall -9 nitrogen
-#nitrogen --restore &
+killall -9 nitrogen
+nitrogen --restore &
 
 # show moon
-$HOME/local/bin/xphoon -b
+#$HOME/local/bin/xphoon -b
 
 
 # ibus @IMPORTANT@ please put this at last, or xinput will conflict.
