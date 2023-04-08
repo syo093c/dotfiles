@@ -19,6 +19,9 @@
 #gnome 40 restart shell shortcuts bug
 #killall -9 gsd-media-keys
 
+#for java application HIDPI
+# export GDK_SCALE=2
+
 #----------------------------------------------------------------------------------------
 # tuning zsh
 # disable ohmyzsh url auto escaping at misc.zsh
@@ -154,8 +157,10 @@ case "${OSTYPE}" in
         alias gpu_reload='sudo rmmod nvidia_uvm && sudo modprobe nvidia_uvm'
         alias __set_keyboard_repeat_rate='xset r rate 250 90'
         #for intel power management
-        alias __performace_mode="sudo cpupower -c all frequency-set -g performance --max 5THz --min 5THz --related && sudo cpupower set -b 0 && nvidia-settings -a '[gpu:0]/GpuPowerMizerMode=1'"
-        alias __powersave_mode="sudo cpupower -c all frequency-set -g powersave --max 5THz --min 100MHz && sudo cpupower set -b 15   && nvidia-settings -a '[gpu:0]/GpuPowerMizerMode=0'"
+        #alias __performace_mode="sudo cpupower -c all frequency-set -g performance --max 5THz --min 5THz --related && sudo cpupower set -b 0 && nvidia-settings -a '[gpu:0]/GpuPowerMizerMode=1'"
+        #alias __powersave_mode="sudo cpupower -c all frequency-set -g powersave --max 5THz --min 100MHz && sudo cpupower set -b 15   && nvidia-settings -a '[gpu:0]/GpuPowerMizerMode=0'"
+        alias __performace_mode="sudo cpupower -c all frequency-set -g performance --max 5THz --min 5THz --related && sudo cpupower set -b 0 &&  echo 'high' |sudo  tee /sys/class/drm/card0/device/power_dpm_force_performance_level "
+        alias __powersave_mode="sudo cpupower -c all frequency-set -g powersave --max 5THz --min 100MHz && sudo cpupower set -b 15   && echo 'auto' |sudo tee /sys/class/drm/card0/device/power_dpm_force_performance_level "
 
         #generate a tmpfs at ~/RAM
         alias genRAM="sudo mount -o uid=1000,gid=1000,mode=0700,size=100% -t tmpfs tmpfs ~/RAM"
@@ -171,9 +176,10 @@ alias c="clear"
 alias p="python"
 #alias pwdl=' ls| sed "s:^:`pwd`/:"'
 alias today="date +%Y_%m_%d"
+alias zat="zathura"
 alias __set_macbook_keybord_light__="echo 60 |sudo tee  /sys/class/leds/apple::kbd_backlight/brightness"
 alias __turn_off_screen__="xset dpms force off"
-alias __ssh_agent__="eval `ssh-agent ` ssh-add $HOME/.ssh/*"
+#alias __ssh_agent__='eval `ssh-agent ` ssh-add $HOME/.ssh/*'
 
 # proxy settings
 alias ssr="export ALL_PROXY=http://127.0.0.1:12333;export all_proxy=http://127.0.0.1:12333;\
