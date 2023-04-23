@@ -20,14 +20,14 @@ xinput set-prop 'bcm5974'  'libinput Accel Speed' 0.6
 xinput set-prop 'bcm5974' 'libinput Tapping Enabled' 1 
 
 #--- picom ---
-#killall -9 picom
-#picom --config $HOME/.config/xmonad/picom.conf &
+killall -9 picom
+picom --config $HOME/.config/xmonad/picom.conf &
 
 #--- polybar ---
 killall -9 polybar
 polybar -c $HOME/.config/xmonad/polybar/config.ini &
 
-#--- lofi ---
+#--- rofi ---
 #killall -9 rofi
 #rofi &
 
