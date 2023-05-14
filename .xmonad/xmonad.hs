@@ -102,7 +102,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch dmenu
     --, ((modm,               xK_p     ), spawn "dmenu_run")
     , ((modm,               xK_p     ), spawn "dmenu_run -nb '#16160e' -sf '#16160e' -sb '#a59aca' -nf '#a59aca' ")
-    , ((modm,               xK_o     ), spawn "bash $HOME/.config/xmonad/bin/rofi.sh")
+    , ((modm,               xK_o     ), spawn "bash $HOME/.xmonad/bin/rofi.sh")
 
 
     -- screenshot
@@ -304,7 +304,7 @@ myEventHook = mempty
 --
 -- By default, do nothing.
 --myStartupHook = return ()
-myStartupHook = do spawn "bash ~/.config/xmonad/bin/autostart.sh"
+myStartupHook = do spawn "bash ~/.xmonad/bin/autostart.sh"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
