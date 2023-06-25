@@ -16,7 +16,7 @@ tmux send-keys "xset r rate 250 90" C-m
 tmux send-keys "setxkbmap -option 'caps:swapescape'" C-m
 #tmux send-keys "xphoon -b" C-m
 tmux send-keys "nitrogen --restore" C-m
-tmux send-keys "redshift" C-m
+tmux send-keys "redshift &" C-m
 #tmux send-keys "ebview &" C-m
 tmux send-keys "copyq &" C-m
 
