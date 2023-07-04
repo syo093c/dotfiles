@@ -304,7 +304,7 @@ myEventHook = mempty
 --
 -- By default, do nothing.
 --myStartupHook = return ()
-myStartupHook = do spawn "bash ~/.xmonad/bin/autostart.sh"
+myStartupHook = do spawn "bash ~/.config/xmonad/bin/autostart.sh"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
