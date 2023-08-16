@@ -19,6 +19,8 @@ tmux send-keys "nitrogen --restore" C-m
 tmux send-keys "redshift &" C-m
 #tmux send-keys "ebview &" C-m
 tmux send-keys "copyq &" C-m
+tmux send-keys "xiccd -e &" C-m
+
 
 #tmux select-pane -t 2
 #tmux send-keys "qv2ray &" C-m
