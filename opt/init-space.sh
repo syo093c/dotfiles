@@ -19,6 +19,9 @@ tmux send-keys "nitrogen --restore" C-m
 tmux send-keys "redshift &" C-m
 #tmux send-keys "ebview &" C-m
 tmux send-keys "copyq &" C-m
+
+
+# color management, also install `colord`
 tmux send-keys "xiccd -e &" C-m
 
 
