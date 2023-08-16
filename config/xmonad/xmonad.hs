@@ -90,9 +90,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_z),     toggleWS)
     
     --sound 
-    , ((0,xK_F1 ),     spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
-    , ((0,xK_F2 ),     spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%")
-    , ((0,xK_F3 ),     spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%")
+    --, ((0,xK_F1 ),     spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
+    --, ((0,xK_F2 ),     spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%")
+    --, ((0,xK_F3 ),     spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%")
 
     -- slock
     , ((modm .|. shiftMask, xK_l), spawn "slock")
