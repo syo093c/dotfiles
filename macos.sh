@@ -10,6 +10,9 @@ defaults write -g ApplePressAndHoldEnabled -bool flase
 defaults write com.apple.finder AppleShowAllFiles TRUE
 defaults write com.apple.dock autohide-delay -float 2147483640
 defaults write com.apple.dock no-bouncing -bool TRUE
+#-- KeyRepeat
+defaults write -g KeyRepeat -int 1
+defaults write -g InitialKeyRepeat -int 15
 #---
 sudo pmset -a powernap 0
 sudo pmset -a tcpkeepalive 0
