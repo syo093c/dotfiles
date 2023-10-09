@@ -39,7 +39,7 @@ export EDITOR=nvim
 
 # If you come from bash you might have to change your $PATH.
 # /local/usr/bin /usr/bin 
-# do not put /bin before /home/local/bin or /usr/bin may cause lot of problem in not Path
+# do not put /bin before /home/local/bin or /usr/bin may cause lot of UNDEFINE problem in not Path
 # but also cmake system.
 #export PATH=/bin:/usr/local/bin${PATH:+:}${PATH}
 
