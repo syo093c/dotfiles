@@ -7,15 +7,20 @@ local plugins = {
         require "custom.configs.lspconfig"
       end,
     },
+    {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "lua-language-server",
-        "pyright",
+      opts = {
+        ensure_installed = {
+          "lua-language-server",
+          "pyright",
+        },
       },
+    }
+    {
+      'charludo/projectmgr.nvim',
+      lazy = false, -- important!
     },
   }
 }
 
 return plugins
-
