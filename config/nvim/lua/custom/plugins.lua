@@ -15,7 +15,7 @@ local plugins = {
           "pyright",
         },
       },
-    }
+    },
     {
       'charludo/projectmgr.nvim',
       lazy = false, -- important!

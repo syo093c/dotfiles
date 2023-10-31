@@ -9,3 +9,4 @@
 -- vim opt custom
 local opt = vim.opt
 opt.clipboard = ""
+opt.mouse = ""
