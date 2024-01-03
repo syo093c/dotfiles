@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  ubuntu-dev-container:
+    image: mcr.microsoft.com/devcontainers/base:jammy
+    container_name: ubuntu-dev-container
+    command: "sleep infinity"  # Keeps the container running
+
+
+    # Uncomment the following lines to forward ports if needed
+    # ports:
+    #   - "your_host_port:container_port"
+
+    # Uncomment the following lines for additional configurations
+    # environment:
+    #   - KEY=VALUE
+
+    volumes:
+      - $HOME/work:/workspace  # Mounts the host $HOME/work to /workspace in the container
+
+    # Uncomment the following line to connect as root
+    # user: root
+
