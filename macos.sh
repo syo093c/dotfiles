@@ -30,3 +30,10 @@ sudo pmset schedule cancelall
 # autoraise
 # flameshot
 # copyq
+#
+#
+brew install binutils findutils diffutils coreutils moreutils
+brew link binutils findutils diffutils coreutils moreutils
+brew install grep gawk gzip gnu-tar gnu-sed gnu-time gnu-getopt
+brew link grep gawk gzip gnu-tar gnu-sed gnu-time gnu-getopt
+
