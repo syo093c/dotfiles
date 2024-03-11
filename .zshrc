@@ -27,6 +27,9 @@
 # disable ohmyzsh url auto escaping at misc.zsh
 export DISABLE_MAGIC_FUNCTIONS=true
 
+# when a space before command, do not record it at history.
+setopt HIST_IGNORE_SPACE
+
 #Increasing the History File Size
 export HISTSIZE=1000000000
 export SAVEHIST=$HISTSIZE
