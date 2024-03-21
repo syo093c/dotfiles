@@ -1,3 +1,5 @@
+# for alacritty
+export TERM=xterm-256color
 #------------------------------------------------------------------------------
 # command block use to restore usrful command
 
