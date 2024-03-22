@@ -1,5 +1,9 @@
 #! /bin/bash -eu
 
+#defaults write com.apple.CrashReporter DialogType crashreport
+defaults write com.apple.CrashReporter DialogType none
+
+
 defaults write com.apple.finder CreateDesktop false
 defaults write com.apple.Terminal FocusFollowsMouse -bool true
 defaults write  -g FocusFollowsMouse -bool true
